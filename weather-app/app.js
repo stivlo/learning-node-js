@@ -1,14 +1,21 @@
 const geocode = require('./utils/geocode');
 const forecast = require('./utils/forecast');
 
+const address = process.argv[2];
+if (!address) {
+    console.log('Please provide an address in quotes');
+} else {
+    geocode(address, (error, geolocation) => {
+        if (error) {
+            return console.log(error);
+        }
+        forecast(geolocation.latitude, geolocation.longitude, (error, forecastData) => {
+            if (error) {
+                return console.log(error);
+            }
+            console.log('Weather for ' + geolocation.location + '. ' + forecastData);
+        });
+    });    
+}
 
-// geocode('97 York Way London', (error, data) => {
-//     console.log('error:', error);
-//     console.log('data:', data);
-// });
 
-
-forecast(44.1545, -75.7088, (error, data) => {
-    console.log('Error: ', error)
-    console.log('Data: ', data)
-});
