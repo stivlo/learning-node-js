@@ -33,9 +33,15 @@ app.get('/help', (req, res) => {
 });
 
 app.get('/weather', (req, res) => {
+    if (!req.query.address) {
+        return res.send({
+            error: 'address must be provided'
+        });
+    }
     res.send({
         location: 'London',
-        forecast: 'Good weather'
+        forecast: 'Good weather',
+        address: req.query.address
     });
 });
 
