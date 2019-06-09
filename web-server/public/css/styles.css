@@ -40,3 +40,16 @@ footer {
     width: 250px;
 }
 
+input {
+    width: 250px;
+    border: 1px solid #ccc; 
+    padding: 5px;
+}
+
+button {
+    cursor: pointer;
+    border: 1px solid #888;
+    background: #888;
+    color: white;
+    padding: 5px;
+}
